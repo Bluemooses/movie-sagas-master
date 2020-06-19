@@ -60,6 +60,6 @@ VALUES
 ('Science Fiction'),
 ('Space-Opera'),
 ('Superhero');
-
-INSERT INTO "movie_genres" ("movie_id", "genre_id")
-VALUES ('10', '9'), ('8', '4'), ('3', '9'), ('1', '3'), ('4', '1'), ('8', '2'), ('6', '4');
+-- dummy data for movie_genres
+INSERT INTO "movie_genres" ("movies_id", "genres_id")
+VALUES ('14', '14'), ('12', '15');
