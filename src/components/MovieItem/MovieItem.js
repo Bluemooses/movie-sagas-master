@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import mapReduxStateToProps from "../Modules/MapReduxState";
 
 class MovieItem extends Component {
   render() {
     return (
       <div>
-        <img src={this.props.movie.poster} alt={this.props.movie.title} />
+        <img
+          src={this.props.movie.poster}
+          alt={this.props.movie.title}
+          onClick={() => this.props.getDetails(this.props.movie)}
+        />
       </div>
     );
   }
 }
 
-export default MovieItem;
+export default connect()(MovieItem);

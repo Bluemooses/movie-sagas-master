@@ -13,12 +13,21 @@ class Home extends Component {
     console.log(this.props.reduxState);
   }
 
+  getDetails = (movie) => {
+      console.log("click");
+      console.log(movie);
+      this.props.dispatch({type: 'GET_THIS_MOVIE', payload: movie});
+  }
+
   render() {
     return (
       <div>
         <p>
           {this.props.reduxState.movies.map((movie) => {
-            return <MovieItem movie={movie} />;
+            return <MovieItem
+            key={movie.id}
+            movie={movie}
+            getDetails={this.getDetails} />;
           })}
         </p>
       </div>
