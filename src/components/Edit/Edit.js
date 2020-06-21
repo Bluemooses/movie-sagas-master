@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import mapReduxStateToProps from "../Modules/MapReduxState";
 import Swal from "sweetalert2";
 import { Card, Button } from "@material-ui/core";
+import { Textarea, List, ListItem, ListIcon } from "@chakra-ui/core";
 
 class Edit extends Component {
   //the dataObject used to update movie description and title
@@ -78,10 +79,10 @@ class Edit extends Component {
           <section className="title">
             {this.props.reduxState.details.title}
             <br />
-            <input
+            <Textarea
               placeholder="Change Title"
               onChange={this.handleTitleIn}
-            ></input>
+            ></Textarea>
           </section>
           <img
             height={125}
@@ -90,24 +91,50 @@ class Edit extends Component {
             alt={this.props.reduxState.details.title}
           />
           <section>
-            <ul>
+            <List className="genres">
               {this.props.reduxState.genres.map((genre, index) => {
-                return <li key={genre.name}>{genre.name}</li>;
+                return (
+                  <ListItem key={genre.name}>
+                    <ListIcon icon="check-circle" color="green.500" />
+                    {genre.name}
+                  </ListItem>
+                );
               })}
-            </ul>
+            </List>
           </section>
           <section className="description">
             {this.props.reduxState.details.description}
             <br />
-            <input
+            <Textarea
               placeholder="Change description"
               onChange={this.handleDescriptionIn}
-            ></input>
+            ></Textarea>
           </section>
           <section className="buttons">
-            <Button variant="contained" color="primary" size="small" onClick={this.handleSaveButton}>Save Changes</Button>
-            <Button variant="contained" color="secondary" size="small" onClick={this.goHomeButton}>Go Home</Button>
-            <Button variant="contained" color="secondary" size="small" onClick={this.backButton}>Go Back</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              onClick={this.handleSaveButton}
+            >
+              Save Changes
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              size="small"
+              onClick={this.goHomeButton}
+            >
+              Go Home
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              size="small"
+              onClick={this.backButton}
+            >
+              Go Back
+            </Button>
           </section>
         </Card>
       </div>

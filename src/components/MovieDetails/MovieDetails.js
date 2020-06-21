@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapReduxStateToProps from "../Modules/MapReduxState";
 import { Button, Card } from "@material-ui/core";
-
+import { Textarea, List, ListItem, ListIcon } from "@chakra-ui/core";
 class MovieDetails extends Component {
   componentDidMount() {
     console.log("Hello world");
@@ -30,11 +30,17 @@ class MovieDetails extends Component {
             alt={this.props.reduxState.details.title}
           />
           <section>
-            <ul>
+            <List>
               {this.props.reduxState.genres.map((genre) => {
-                return <li key={genre.name}>{genre.name}</li>;
+                return (
+                  <ListItem key={genre.name}>
+                    {" "}
+                    <ListIcon icon="check-circle" color="green.500" />
+                    {genre.name}
+                  </ListItem>
+                );
               })}
-            </ul>
+            </List>
           </section>
           <section className="description">
             {this.props.reduxState.details.description}
