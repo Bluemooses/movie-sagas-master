@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapReduxStateToProps from "../Modules/MapReduxState";
 import Swal from "sweetalert2";
+import { Card, Button } from "@material-ui/core";
+
 class Edit extends Component {
   //the dataObject used to update movie description and title
   state = {
@@ -72,40 +74,42 @@ class Edit extends Component {
   render() {
     return (
       <div>
-        <section className="title">
-          {this.props.reduxState.details.title}
-          <br />
-          <input
-            placeholder="Change Title"
-            onChange={this.handleTitleIn}
-          ></input>
-        </section>
-        <img
-          height={125}
-          width={100}
-          src={this.props.reduxState.details.poster}
-          alt={this.props.reduxState.details.title}
-        />
-        <section>
-          <ul>
-            {this.props.reduxState.genres.map((genre, index) => {
-              return <li key={genre.name}>{genre.name}</li>;
-            })}
-          </ul>
-        </section>
-        <section className="description">
-          {this.props.reduxState.details.description}
-          <br />
-          <input
-            placeholder="Change description"
-            onChange={this.handleDescriptionIn}
-          ></input>
-        </section>
-        <section className="buttons">
-          <button onClick={this.handleSaveButton}>Save Changes</button>
-          <button onClick={this.goHomeButton}>Go Home</button>
-          <button onClick={this.backButton}>Go Back</button>
-        </section>
+        <Card>
+          <section className="title">
+            {this.props.reduxState.details.title}
+            <br />
+            <input
+              placeholder="Change Title"
+              onChange={this.handleTitleIn}
+            ></input>
+          </section>
+          <img
+            height={125}
+            width={100}
+            src={this.props.reduxState.details.poster}
+            alt={this.props.reduxState.details.title}
+          />
+          <section>
+            <ul>
+              {this.props.reduxState.genres.map((genre, index) => {
+                return <li key={genre.name}>{genre.name}</li>;
+              })}
+            </ul>
+          </section>
+          <section className="description">
+            {this.props.reduxState.details.description}
+            <br />
+            <input
+              placeholder="Change description"
+              onChange={this.handleDescriptionIn}
+            ></input>
+          </section>
+          <section className="buttons">
+            <Button variant="contained" color="primary" size="small" onClick={this.handleSaveButton}>Save Changes</Button>
+            <Button variant="contained" color="secondary" size="small" onClick={this.goHomeButton}>Go Home</Button>
+            <Button variant="contained" color="secondary" size="small" onClick={this.backButton}>Go Back</Button>
+          </section>
+        </Card>
       </div>
     );
   }

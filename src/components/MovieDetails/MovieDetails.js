@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapReduxStateToProps from "../Modules/MapReduxState";
+import { Button, Card } from "@material-ui/core";
 
 class MovieDetails extends Component {
   componentDidMount() {
@@ -12,36 +13,51 @@ class MovieDetails extends Component {
   };
 
   hitEditPage = () => {
-       this.props.history.push(`/edit/{id}`);
-  }
+    this.props.history.push(`/edit/{id}`);
+  };
 
   render() {
     return (
       <div>
-        {" "}
-        <section className="title">
-          {this.props.reduxState.details.title}
-        </section>
-        <img
-          height={125}
-          width={100}
-          src={this.props.reduxState.details.poster}
-          alt={this.props.reduxState.details.title}
-        />
-        <section>
-          <ul>
-            {this.props.reduxState.genres.map((genre) => {
-              return <li key={genre.name}>{genre.name}</li>;
-            })}
-          </ul>
-        </section>
-        <section className="description">
-          {this.props.reduxState.details.description}
-        </section>
-        <section>
-          <button backButton={this.backButton} onClick={this.backButton}>Go Home</button>
-          <button onClick={this.hitEditPage}>Edit</button>
-        </section>
+        <Card>
+          <section className="title">
+            {this.props.reduxState.details.title}
+          </section>
+          <img
+            height={125}
+            width={100}
+            src={this.props.reduxState.details.poster}
+            alt={this.props.reduxState.details.title}
+          />
+          <section>
+            <ul>
+              {this.props.reduxState.genres.map((genre) => {
+                return <li key={genre.name}>{genre.name}</li>;
+              })}
+            </ul>
+          </section>
+          <section className="description">
+            {this.props.reduxState.details.description}
+          </section>
+          <section>
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="small"
+              onClick={this.backButton}
+            >
+              Go Home
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              onClick={this.hitEditPage}
+            >
+              Edit
+            </Button>
+          </section>
+        </Card>
       </div>
     );
   }

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapReduxStateToProps from "../Modules/MapReduxState";
-
+import { GridList } from "@material-ui/core";
 import MovieItem from "../MovieItem/MovieItem";
+
+
 class Home extends Component {
   componentDidMount() {
     this.getMovies();
@@ -28,7 +30,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <p>
+        <GridList>
           {this.props.reduxState.movies.map((movie) => {
             return (
               <MovieItem
@@ -39,7 +41,7 @@ class Home extends Component {
               />
             );
           })}
-        </p>
+        </GridList>
       </div>
     );
   }
