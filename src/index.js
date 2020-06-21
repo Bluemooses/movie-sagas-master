@@ -26,13 +26,13 @@ function* getMovies() {
   }
 }
 function* getThisMovie(action) {
-  console.log("client side GET", action);
+  console.log("client side GET", action.payload.id);
   try {
-    let response = yield axios.get(`/api/details/${action.payload}`);
+    let response = yield axios.get(`/details/${action.payload.id}`);
     console.log("details GET saga response", response.data);
     //gives selected movie details to detail reducer
     yield put({
-      type: "MOVIE_DETAILS",
+      type: "SET_DETAILS",
       payload: response.data,
     });
   } catch (error) {
@@ -63,11 +63,18 @@ const genres = (state = [], action) => {
   }
 };
 
-const details = (state = [], action) => {
-  console.log(state);
+const details = (
+  state = {
+    id: 0,
+    title: "",
+    poster: "",
+    description: "",
+  },
+  action
+) => {
   switch (action.type) {
-    case "MOVIE_DETAILS":
-      return action.payload;
+    case "SET_DETAILS":
+      return (state = action.payload);
     default:
       return state;
   }

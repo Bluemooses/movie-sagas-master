@@ -19,19 +19,6 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
-    console.log(req.params.id);
-  const queryText = `SELECT * FROM "movies" WHERE "id" = $1`;
-  pool
-    .query(queryText, [req.params.id])
-    .then((results) => {
-        res.send(results.rows);
-      console.log(results.rows);
-    })
-    .catch((error) => {
-      console.log("error in server side GET", error);
-      res.sendStatus(500);
-    });
-});
+
 
 module.exports = router;
