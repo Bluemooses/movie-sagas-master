@@ -17,6 +17,7 @@ class Home extends Component {
       console.log("click");
       console.log(movie);
       this.props.dispatch({type: 'GET_THIS_MOVIE', payload: movie});
+      this.props.history.push(`/details/${id}`);
   }
 
   render() {
