@@ -45,13 +45,13 @@ class Edit extends Component {
       text: "You will not be able to recover the description or title!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, change it!",
       cancelButtonText: "No, keep it",
     }).then((result) => {
       if (result.value) {
         Swal.fire(
-          "Deleted!",
-          "That gif was deleted.",
+          "Success.  I guess you know better than the critics.",
+          "Your description was altered.",
           "success",
           this.props.dispatch({
             type: "EDIT_MOVIES",
@@ -61,7 +61,7 @@ class Edit extends Component {
               description: this.state.description,
             },
           }),
-          this.props.dispatch({ type: "GET_THIS_MOVIE" })
+          this.props.history.push("/")
         );
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire("Cancelled", "Your gif is safe :)", "error");
