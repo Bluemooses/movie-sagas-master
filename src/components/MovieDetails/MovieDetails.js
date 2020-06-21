@@ -39,7 +39,7 @@ class MovieDetails extends Component {
           {this.props.reduxState.details.description}
         </section>
         <section>
-          <button onClick={this.backButton}>Go Home</button>
+          <button backButton={this.backButton} onClick={this.backButton}>Go Home</button>
           <button onClick={this.hitEditPage}>Edit</button>
         </section>
       </div>

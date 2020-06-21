@@ -14,27 +14,30 @@ class Home extends Component {
   }
 
   getDetails = (movie) => {
-      console.log("click");
-      console.log(movie);
-      this.props.dispatch({type: 'GET_THIS_MOVIE', payload: movie});
-      this.props.history.push(`/details/{id}`);
-  }
+    console.log("click");
+    console.log(movie);
+    this.props.dispatch({ type: "GET_THIS_MOVIE", payload: movie });
+    this.props.history.push(`/details/{id}`);
+  };
 
   getGenres = (movie) => {
-    this.props.dispatch({type: 'GET_GENRES', payload: movie});
+    this.props.dispatch({ type: "GET_GENRES", payload: movie });
     console.log(movie);
-  }
+  };
 
   render() {
     return (
       <div>
         <p>
           {this.props.reduxState.movies.map((movie) => {
-            return <MovieItem
-            key={movie.id}
-            movie={movie}
-            getDetails={this.getDetails}
-            getGenres={this.getGenres} />;
+            return (
+              <MovieItem
+                key={movie.id}
+                movie={movie}
+                getDetails={this.getDetails}
+                getGenres={this.getGenres}
+              />
+            );
           })}
         </p>
       </div>
