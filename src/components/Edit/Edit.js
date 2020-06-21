@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapReduxStateToProps from "../Modules/MapReduxState";
-
+import Swal from "sweetalert2";
 class Edit extends Component {
   //the dataObject used to update movie description and title
   state = {
@@ -38,15 +38,36 @@ class Edit extends Component {
   handleSaveButton = () => {
     console.log(this.state);
     console.log(this.props.reduxState.details.id);
-    this.props.dispatch({
-      type: "EDIT_MOVIES",
-      payload: {
-        id: this.props.reduxState.details.id,
-        title: this.state.title,
-        description: this.state.description,
-      },
+
+    console.log("this will be a DELETE request");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will not be able to recover the description or title!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, keep it",
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          "Deleted!",
+          "That gif was deleted.",
+          "success",
+          this.props.dispatch({
+            type: "EDIT_MOVIES",
+            payload: {
+              id: this.props.reduxState.details.id,
+              title: this.state.title,
+              description: this.state.description,
+            },
+          }),
+          this.props.dispatch({ type: "GET_THIS_MOVIE" })
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelled", "Your gif is safe :)", "error");
+      }
     });
-  };
+  }; //end delete
 
   render() {
     return (
