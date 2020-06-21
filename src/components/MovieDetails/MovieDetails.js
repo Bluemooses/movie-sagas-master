@@ -8,15 +8,26 @@ class MovieDetails extends Component {
   }
 
   backButton = () => {
-      this.props.history.push('/');
+    this.props.history.push("/");
+  };
+
+  hitEditPage = () => {
+       this.props.history.push(`/edit/{id}`);
   }
 
   render() {
     return (
       <div>
+        {" "}
         <section className="title">
           {this.props.reduxState.details.title}
         </section>
+        <img
+          height={125}
+          width={100}
+          src={this.props.reduxState.details.poster}
+          alt={this.props.reduxState.details.title}
+        />
         <section>
           <ul>
             {this.props.reduxState.genres.map((genre) => {

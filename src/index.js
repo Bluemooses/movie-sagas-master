@@ -16,6 +16,7 @@ function* rootSaga() {
   yield takeEvery("GET_MOVIES", getMovies);
   yield takeEvery("GET_THIS_MOVIE", getThisMovie);
   yield takeEvery("GET_GENRES", getGenres);
+  yield takeEvery("EDIT_ITEM", editItem);
 }
 
 function* getMovies() {
@@ -75,6 +76,24 @@ const genres = (state = [], action) => {
       return state;
   }
 };
+
+const editItem = (
+  state = {
+    id: 0,
+    title: "",
+    poster: "",
+    description: "",
+  },
+  action
+) => {
+  switch (action.type) {
+    case "EDIT_ITEM":
+      return (state = action.payload);
+    default:
+      return state;
+  }
+};
+
 
 const details = (
   state = {
