@@ -20,6 +20,11 @@ class Home extends Component {
       this.props.history.push(`/details/{id}`);
   }
 
+  getGenres = (movie) => {
+    this.props.dispatch({type: 'GET_GENRES', payload: movie});
+    console.log(movie);
+  }
+
   render() {
     return (
       <div>
@@ -28,7 +33,8 @@ class Home extends Component {
             return <MovieItem
             key={movie.id}
             movie={movie}
-            getDetails={this.getDetails} />;
+            getDetails={this.getDetails}
+            getGenres={this.getGenres} />;
           })}
         </p>
       </div>

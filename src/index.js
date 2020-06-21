@@ -15,6 +15,7 @@ import axios from "axios";
 function* rootSaga() {
   yield takeEvery("GET_MOVIES", getMovies);
   yield takeEvery("GET_THIS_MOVIE", getThisMovie);
+  yield takeEvery("GET_GENRES", getGenres);
 }
 
 function* getMovies() {
@@ -37,6 +38,18 @@ function* getThisMovie(action) {
     });
   } catch (error) {
     console.log("error in details GET client side", error);
+  }
+}
+
+function* getGenres(action) {
+  try {
+    let result = yield axios.get(`/movie/genres/${action.payload}`);
+    yield put({
+      type: "SET_GENRES",
+      payload: result.data,
+    });
+  } catch (error) {
+    console.log("error in get genres", error);
   }
 }
 

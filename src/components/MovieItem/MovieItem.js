@@ -8,9 +8,11 @@ class MovieItem extends Component {
         <img
           src={this.props.movie.poster}
           alt={this.props.movie.title}
-          onClick={() => this.props.getDetails(this.props.movie)}
+          onClick={() => {
+            this.props.getDetails(this.props.movie);
+            this.props.getGenres(this.props.movie.id);
+          }}
         />
-        {this.props.movie.description}
       </div>
     );
   }
