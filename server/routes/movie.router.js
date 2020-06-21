@@ -38,4 +38,18 @@ WHERE "genres_movies".movies_id = $1;`;
     });
 });
 
+router.put("/edit/:id", (req, res) => {
+  console.log(req.body);
+  let queryText = `UPDATE "movies" SET "title" = $2, "description" = $3 WHERE "id" = $1;`;
+  pool
+    .query(queryText, [req.params.id, req.body.title, req.body.description])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("error in server side PUT", error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

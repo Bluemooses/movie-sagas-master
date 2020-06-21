@@ -16,7 +16,7 @@ function* rootSaga() {
   yield takeEvery("GET_MOVIES", getMovies);
   yield takeEvery("GET_THIS_MOVIE", getThisMovie);
   yield takeEvery("GET_GENRES", getGenres);
-  yield takeEvery("EDIT_ITEM", editItem);
+  yield takeEvery("EDIT_MOVIES", editMovies);
 }
 
 function* getMovies() {
@@ -54,6 +54,21 @@ function* getGenres(action) {
   }
 }
 
+function* editMovies(action) {
+  try {
+    console.log(action.payload);
+    yield axios.put(`/movie/edit/${action.payload.id}`, {
+      title: action.payload.title,
+      description: action.payload.description,
+    });
+    yield put({
+      type: "GET_MOVIES",
+    });
+  } catch (error) {
+    console.log("error in movies edit");
+  }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -76,24 +91,6 @@ const genres = (state = [], action) => {
       return state;
   }
 };
-
-const editItem = (
-  state = {
-    id: 0,
-    title: "",
-    poster: "",
-    description: "",
-  },
-  action
-) => {
-  switch (action.type) {
-    case "EDIT_ITEM":
-      return (state = action.payload);
-    default:
-      return state;
-  }
-};
-
 
 const details = (
   state = {
