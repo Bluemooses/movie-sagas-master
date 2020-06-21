@@ -11,7 +11,7 @@ class Edit extends Component {
 
   //handlers for inputs
   handleTitleIn = (event) => {
-    console.log(this.state);
+    // console.log(this.state);
     this.setState({
       ...this.state,
       title: event.target.value,
@@ -19,20 +19,35 @@ class Edit extends Component {
   };
 
   handleDescriptionIn = (event) => {
-    console.log(this.state);
+    // console.log(this.state);
     this.setState({
       ...this.state,
       description: event.target.value,
     });
   }; //end event handlers
 
-  removeGenre = () => {
-    console.log(this.props.reduxState);
+  backButton = () => {
+    this.props.history.push("/details/:id");
   };
 
-  backButton = () => {
+  goHomeButton = () => {
     this.props.history.push("/");
   };
+
+  //set the new payload with matching ID to insert new value into DB
+  handleSaveButton = () => {
+    console.log(this.state);
+    console.log(this.props.reduxState.details.id);
+    this.props.dispatch({
+      type: "EDIT_MOVIES",
+      payload: {
+        id: this.props.reduxState.details.id,
+        title: this.state.title,
+        description: this.state.description,
+      },
+    });
+  };
+
   render() {
     return (
       <div>
@@ -66,8 +81,9 @@ class Edit extends Component {
           ></input>
         </section>
         <section className="buttons">
-          <button onClick={this.backButton}>Go Home</button>
           <button onClick={this.handleSaveButton}>Save Changes</button>
+          <button onClick={this.goHomeButton}>Go Home</button>
+          <button onClick={this.backButton}>Go Back</button>
         </section>
       </div>
     );
