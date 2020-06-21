@@ -10,6 +10,7 @@ class MovieItem extends Component {
           alt={this.props.movie.title}
           onClick={() => this.props.getDetails(this.props.movie)}
         />
+        {this.props.movie.description}
       </div>
     );
   }
