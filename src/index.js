@@ -17,6 +17,7 @@ function* rootSaga() {
   yield takeEvery("GET_THIS_MOVIE", getThisMovie);
   yield takeEvery("GET_GENRES", getGenres);
   yield takeEvery("EDIT_MOVIES", editMovies);
+  yield takeEvery("UPDATE_MOVIES", updateMovies);
 }
 
 function* getMovies() {
@@ -66,6 +67,17 @@ function* editMovies(action) {
     });
   } catch (error) {
     console.log("error in movies edit");
+  }
+}
+
+function* updateMovies(action) {
+  try {
+    console.log(action.payload);
+    yield put({
+      type: "GET_THIS_MOVIE",
+    });
+  } catch (error) {
+    console.log("Err in update");
   }
 }
 

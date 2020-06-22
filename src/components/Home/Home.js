@@ -4,7 +4,6 @@ import mapReduxStateToProps from "../Modules/MapReduxState";
 import { GridList } from "@material-ui/core";
 import MovieItem from "../MovieItem/MovieItem";
 
-
 class Home extends Component {
   componentDidMount() {
     this.getMovies();
