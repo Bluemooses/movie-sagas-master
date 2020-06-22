@@ -47,15 +47,15 @@ This app let's you change the details of a movie on the fly, keep track of your 
 
 ## Built With
 
-React JS
-Material-UI
-Chakra-UI/core
-Node.js
-SQL
+1. React JS
+2. Material-UI
+3. Chakra-UI/core
+4. Node.js
+5. SQL
 
 _
 
 ## Acknowledgement
 Thanks to my instructors Casie, Edan, and Kris, and all the wonderful people I've met along this journey through Prime.  I appreciate the support given to me by friends, family, and my partner Taylor.
 ## Support
-If you have suggestions or issues, please email me at [youremail@whatever.com](www.google.com)
+If you have suggestions or issues, please email me at [jacob.brenke@gmail.com](www.google.com)
