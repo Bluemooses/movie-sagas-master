@@ -11,15 +11,14 @@ I thoroughly enjoyed this project and will spend some time styling it up and add
 
 
 ### Prerequisites
-
-Link to software that is required to install the app (e.g. node).
-
 - [Node.js](https://nodejs.org/en/)
+- [Nodemon](https://www.npmjs.com/package/nodemon)
+- [Postgres](https://www.postgresql.org/download/)
 
 ## Installation
 
 1. Create a database named `saga_movies_weekend`
-2. Run the queries from `database.sql` on the `saga_movies_weekend` database. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
+2. Run the queries from `database.sql` on the `saga_movies_weekend` database. We recommend using Postico to run those queries as that was used to create the queries, 
 3. Open up your editor of choice and run an `npm install`
 4. Run `npm run server` in your terminal
 5. Run `npm run client` in your terminal
